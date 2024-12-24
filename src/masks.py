@@ -10,7 +10,14 @@ def get_mask_account(card_mask: str) -> str:
     return f"{card_mask[:len(card_mask) - 20]} **{card_mask[-4:]}"
 
 
+def get_date(date: str) -> str:
+    """замена формата даты на краткий дд.мм.гггг"""
+
+    new_date = date[:10].split('-')
+    return '.'.join(new_date[::-1])
+
 
 if __name__ == "__main__":
     print(get_mask_card_number(input()))
     print(get_mask_account(input()))
+    print(get_date(input()))
