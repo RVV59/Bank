@@ -21,3 +21,11 @@ def filter_by_state(list_payments, state='EXECUTED'):
 
 print(filter_by_state(data))
 
+def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
+    """принимает список словарей и возвращает отсортированный по дате"""
+
+    return sorted(data, key=lambda x: x['date'], reverse=descending)
+
+
+sorted_data = sort_by_date(data)
+print(sorted_data)
