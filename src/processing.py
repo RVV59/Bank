@@ -13,7 +13,7 @@ def filter_by_state(list_payments: list[dict], state="EXECUTED") -> list[dict]:
     'EXECUTED'). Функция возвращает новый список словарей, содержащий только те словари, у которых ключ
     state"""
 
-    new_list = [pay for pay in data if pay.get("state") == state]
+    new_list = [p for p in data if p.get("state") == state]
     return new_list
 
 

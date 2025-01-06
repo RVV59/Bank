@@ -11,7 +11,7 @@ def get_mask_account(card_mask: str) -> str:
 
 
 def get_date(date: str) -> str:
-    """замена формата даты на краткий дд.мм.гггг"""
+    """замена формата даты на краткий дд.мм.гг гг"""
 
     new_date = date[:10].split('-')
     return '.'.join(new_date[::-1])
