@@ -8,7 +8,7 @@ data = [
 ]
 
 
-def filter_by_state(list_payments: list[dict], state="EXECUTED") -> list[dict]:
+def filter_by_state(list_payments: list[dict], state: str="EXECUTED") -> list[dict]:
     """принимает список словарей и опционально значение для ключа state  (по умолчанию
     'EXECUTED'). Функция возвращает новый список словарей, содержащий только те словари, у которых ключ
     state"""
