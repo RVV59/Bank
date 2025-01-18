@@ -19,25 +19,24 @@ def test_get_mask_card_number(card_number, expected_exception):
     else:
         with pytest.raises(expected_exception):
             get_mask_card_number(card_number)
-#
-# #
-# @pytest.mark.parametrize("input_card_number,expected_output", [
-#     ("1234123412341234", "1234 12** **** 1234"),
-#     ("9999888877776666", "9999 88** **** 6666"),
-#     ("", ""),
-#     ("1234567890", "1234567890")
-# ])
-# def test_get_mask_card_number(input_card_number, expected_output):
-#     actual_output = get_mask_card_number(input_card_number)
-#     assert actual_output == expected_output
+
+@pytest.mark.parametrize("card_mask,expected_output",
+[
+        ("12341234123412345555", None),
+        ("12341234", ValueError),
+        ("", ValueError),
+        ("123412341234123X1111", ValueError),
+        ("ABCDEF12345678901111", ValueError),
+    ],
+)
+def test_get_mask_account(card_mask, expected_output):
+    if expected_output is None:
+        get_mask_account(card_mask)
+    else:
+        with pytest.raises(expected_output):
+            get_mask_account(card_mask)
 
 
-# def test_get_mask_card_number(card_number: str) -> str:
-#     if len(card_number) != 16:
-#         raise ValueError("Длина номера карты должна быть 16 символов.")
-
-#
-# @pytest.mark.parametrize("input_account_number,expected_output", [
 #     ("11111234567890123456", "**3456"),
 #     ("11110987654321098765", "**8765")
 # ])
@@ -45,16 +44,12 @@ def test_get_mask_card_number(card_number, expected_exception):
 #     actual_output = get_mask_account(input_account_number)
 #     assert actual_output == expected_output
 #
-#
-# # def test_get_len_mask_card_account(card_number: str) -> str:
-# #     if len(card_number) != 20:
-# #         raise ValueError("Длина номера счета должна быть 20 символов.")
-#
-#
-# @pytest.mark.parametrize("input_date,expected_output", [
-#     ("2023-10-15", "15.10.2023"),
-#     ("2000-01-01", "01.01.2000")
-# ])
-# def test_get_date(input_date, expected_output):
-#     actual_output = get_date(input_date)
-#     assert actual_output == expected_output
+
+
+@pytest.mark.parametrize("input_date,expected_output", [
+    ("2023-10-15", "15.10.2023"),
+    ("2000-01-01", "01.01.2000")
+])
+def test_get_date(input_date, expected_output):
+    actual_output = get_date(input_date)
+    assert actual_output == expected_output
