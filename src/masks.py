@@ -1,5 +1,5 @@
-#
 
+#
 def get_mask_card_number(card_number: str) -> str:
     if len(card_number) != 16 or card_number == '' or not card_number.isdigit():
         raise ValueError('Номер карты должен состоять из 16 цифр')
@@ -10,12 +10,13 @@ def get_mask_account(card_mask: str) -> str:
     if len(card_mask) != 20 or card_mask == '' or not card_mask.isdigit():
         raise ValueError('Номер карты должен состоять из 20 цифр')
     return f"**{card_mask[-4:]}"
-
-
+#
 
 def get_date(date: str) -> str:
-
-    new_date = date[:10].split('-')
+    if len(date) != 26 or date == '':
+        raise ValueError('Неправильный формат даты')
+    else:
+        new_date = date[:10].split('-')
     return '.'.join(new_date[::-1])
 
 
