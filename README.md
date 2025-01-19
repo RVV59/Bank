@@ -39,3 +39,13 @@
    pip install -r requirements.txt
    ```
  
+##Тестирование
+
+
+File	statements	missing	excluded	coverage
+src\__init__.py	0	0	0	100%
+src\masks.py	17	13	0	24%
+src\processing.py	11	0	0	100%
+src\widget.py	11	10	0	9%
+Total	39	23	0	41%
+coverage.py v7.6.10, created at 2025-01-20 03:17 +0700
