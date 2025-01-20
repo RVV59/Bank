@@ -1,15 +1,21 @@
 import pytest
 
 
-from src.widget import get_mask_account_card
+from src.widget import get_mask_account_card, get_date
 
-@pytest.fixture
-def valid_card_numbers():
-    return ["111122223333444", "222233344455"]
+@pytest.mark.parametrize("card_mask, expected", [
+    ("7000792289606361", "7000 79** **** 6361"),
+    ("73654108430135874305", "**4305"),
+])
+def test_get_mask_account_card(card_mask, expected):
+    actual = get_mask_account_card(card_mask)
+    assert actual == expected
+
+@pytest.mark.parametrize("date, expected", [
+    ("2024-03-11T02:26:18.671407", "11.03.2024"),
+])
+def test_get_date(date, expected):
+    actual = get_date(date)
+    assert actual == expected
 
 
-def test_get_mask_account_card(valid_card_numbers):
-    for card_number in valid_card_numbers:
-        result = get_mask_account_card(card_number)
-        assert len(result) == 19, "Длина результата должна быть 19"
-        assert len(result) == 6, "Длина результата должна быть 6"

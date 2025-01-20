@@ -1,4 +1,4 @@
-from masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_card_number, get_mask_account
 
 
 def get_mask_account_card(card_mask: str) -> str:
@@ -19,4 +19,4 @@ def get_date(date: str) -> str:
 if __name__ == "__main__":
     # print(get_mask_card_number(input()))
     print(get_mask_account_card(input()))
-    # print(get_date(input()))
+    print(get_date(input()))
