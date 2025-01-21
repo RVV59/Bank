@@ -7,6 +7,9 @@ def get_mask_account_card(card_mask: str) -> str:
         return get_mask_card_number(card_mask)
     elif len(card_mask) == 20:
         return get_mask_account(card_mask)
+    else:
+        # return ""
+        raise ValueError(f"Неподходящая длина строки: {len(card_mask)}")
 
 
 def get_date(date: str) -> str:

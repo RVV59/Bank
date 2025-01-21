@@ -1,12 +1,10 @@
 import pytest
-from datetime import datetime
-from typing import List, Dict
 
 from src.processing import filter_by_state, sort_by_date
 
 
 @pytest.fixture(scope="module")
-def test_data():
+def test_data() -> list:
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -20,18 +18,16 @@ def test_data():
     [
         ([{"id": 1, "state": "EXECUTED"}], ["EXECUTED"]),
         ([{"id": 1, "state": "PENDING"}], []),
-        (
-                [
-                    {"id": 1, "state": "EXECUTED"},
-                    {"id": 2, "state": "EXECUTED"},
-                    {"id": 3, "state": "CANCELED"}
-                ],
-                ["EXECUTED", "EXECUTED"]
-        ),
+        ([{"id": 1, "state": "EXECUTED"},
+          {"id": 2, "state": "EXECUTED"},
+          {"id": 3, "state": "CANCELED"}
+          ],
+         ["EXECUTED", "EXECUTED"]
+         ),
         ([], [])
     ]
 )
-def test_filter_by_state(input_data, expected_result):
+def test_filter_by_state(input_data: list[dict], expected_result: list[dict]) -> list[dict]:
     result = filter_by_state(input_data)
     assert len(result) == len(expected_result)
     for item in result:
@@ -42,35 +38,29 @@ def test_filter_by_state(input_data, expected_result):
     "input_data, descending, expected_order",
     [
         # Проверяем порядок по возрастанию
-        (
-                [
-                    {"date": "2020-01-01T00:00:00Z"},
-                    {"date": "2019-01-01T00:00:00Z"},
-                    {"date": "2021-01-01T00:00:00Z"}
-                ],
-                False,
-                ["2019-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2021-01-01T00:00:00Z"]
-        ),
+        ([{"date": "2020-01-01T00:00:00Z"},
+          {"date": "2019-01-01T00:00:00Z"},
+          {"date": "2021-01-01T00:00:00Z"}
+          ],
+         False,
+         ["2019-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2021-01-01T00:00:00Z"]
+         ),
         # Проверяем порядок по убыванию
-        (
-                [
-                    {"date": "2020-01-01T00:00:00Z"},
-                    {"date": "2019-01-01T00:00:00Z"},
-                    {"date": "2021-01-01T00:00:00Z"}
-                ],
-                True,
-                ["2021-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2019-01-01T00:00:00Z"]
-        ),
+        ([{"date": "2020-01-01T00:00:00Z"},
+          {"date": "2019-01-01T00:00:00Z"},
+          {"date": "2021-01-01T00:00:00Z"}
+          ],
+         True,
+         ["2021-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2019-01-01T00:00:00Z"]
+         ),
         # Проверяем случай с одинаковыми датами
-        (
-                [
-                    {"date": "2020-01-01T00:00:00Z"},
-                    {"date": "2020-01-01T00:00:00Z"},
-                    {"date": "2021-01-01T00:00:00Z"}
-                ],
-                True,
-                ["2021-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2020-01-01T00:00:00Z"]
-        )
+        ([{"date": "2020-01-01T00:00:00Z"},
+          {"date": "2020-01-01T00:00:00Z"},
+          {"date": "2021-01-01T00:00:00Z"}
+          ],
+         True,
+         ["2021-01-01T00:00:00Z", "2020-01-01T00:00:00Z", "2020-01-01T00:00:00Z"]
+         )
     ]
 )
 def test_sort_by_date(input_data, descending, expected_order):
