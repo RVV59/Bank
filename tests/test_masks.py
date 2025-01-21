@@ -15,12 +15,7 @@ from src.masks import get_date, get_mask_account, get_mask_card_number
         ("ABCDEF1234567890", ValueError),
     ],
 )
-# def test_get_mask_card_number(card_number: list, expected_exception: list) -> list:
-#     if expected_exception is None:
-#         get_mask_card_number(card_number)
-#     else:
-#         with pytest.raises(expected_exception):
-#             get_mask_card_number(card_number)
+
 
 def test_get_mask_card_number(card_number: str, expected_exception: Union[type[ValueError], None]) -> None:
     if expected_exception is None:
