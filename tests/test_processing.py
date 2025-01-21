@@ -27,7 +27,7 @@ def test_data() -> list:
         ([], [])
     ]
 )
-def test_filter_by_state(input_data: list[dict], expected_result: list[dict]) -> list[dict]:
+def test_filter_by_state(input_data: list[dict], expected_result: list[dict]) -> None:
     result = filter_by_state(input_data)
     assert len(result) == len(expected_result)
     for item in result:
@@ -63,7 +63,7 @@ def test_filter_by_state(input_data: list[dict], expected_result: list[dict]) ->
          )
     ]
 )
-def test_sort_by_date(input_data, descending, expected_order):
+def test_sort_by_date(input_data: list[dict], descending: bool, expected_order: bool) -> None:
     result = sort_by_date(input_data, descending)
     actual_dates = [item['date'] for item in result]
     assert actual_dates == expected_order

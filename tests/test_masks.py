@@ -2,7 +2,7 @@ from typing import Union
 
 import pytest
 
-from src.masks import get_mask_card_number, get_mask_account, get_date
+from src.masks import get_date, get_mask_account, get_mask_card_number
 
 
 @pytest.mark.parametrize(

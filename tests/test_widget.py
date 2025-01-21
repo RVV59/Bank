@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import get_mask_account_card, get_date
+from src.widget import get_date, get_mask_account_card
 
 
 @pytest.mark.parametrize("card_mask, expected", [

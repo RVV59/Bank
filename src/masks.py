@@ -10,7 +10,7 @@ def get_mask_account(card_mask: str) -> str:
     if len(card_mask) != 20 or card_mask == '' or not card_mask.isdigit():
         raise ValueError('Номер карты должен состоять из 20 цифр')
     return f"**{card_mask[-4:]}"
-#
+
 
 def get_date(date: str) -> str:
     if len(date) != 26 or date == '':
