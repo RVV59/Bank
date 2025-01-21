@@ -9,7 +9,8 @@ data_bank = [
 
 
 def filter_by_state(data_bank: list[dict]) -> list[dict]:
-    """Возвращает новый список словарей, содержащих только те записи, у которых значение ключа 'state' равно 'EXECUTED'."""
+    """Возвращает новый список словарей, содержащих только те записи, у которых значение ключа 'state' равно
+     'EXECUTED'."""
 
     new_list = [pay for pay in data_bank if pay.get("state") == "EXECUTED"]
     return new_list
