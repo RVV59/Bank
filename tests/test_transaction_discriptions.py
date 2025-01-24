@@ -1,3 +1,6 @@
+import pytest
+
+
 @pytest.fixture
 def descriptions():
     return list(transaction_descriptions(transactions))# Параметризация для проверки различных типов описаний транзакций

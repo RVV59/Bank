@@ -1,3 +1,5 @@
+import pytest
+
 @pytest.fixture
 def usd_transactions():
     return list(filter_by_currency(transactions, "USD"))
