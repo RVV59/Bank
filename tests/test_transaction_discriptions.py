@@ -23,4 +23,4 @@ from src.generators import transaction_descriptions
                        ([], [])]
 )
 def test_transaction_descriptions(data, expected):
-    asseZrt list(transaction_descriptions(data)) == expected
+    assert list(transaction_descriptions(data)) == expected
