@@ -15,13 +15,6 @@ from src.masks import get_date, get_mask_account, get_mask_card_number
         ("ABCDEF1234567890", ValueError),
     ],
 )
-# def test_get_mask_card_number(card_number: list, expected_exception: list) -> list:
-#     if expected_exception is None:
-#         get_mask_card_number(card_number)
-#     else:
-#         with pytest.raises(expected_exception):
-#             get_mask_card_number(card_number)
-
 def test_get_mask_card_number(card_number: str, expected_exception: Union[type[ValueError], None]) -> None:
     if expected_exception is None:
         result = get_mask_card_number(card_number)
@@ -57,13 +50,13 @@ def test_get_date() -> None:
 @pytest.fixture
 def valid_dates() -> list[str]:
     return [
-            '2024-03-11T02:26:18.671407',
-            '2000-01-01T00:00:00.000000'
+        '2024-03-11T02:26:18.671407',
+        '2000-01-01T00:00:00.000000'
     ]
 
 
 @pytest.fixture
-def invalid_dates()-> list[str]:
+def invalid_dates() -> list[str]:
     return [
         '',
         'invalid-date-format',
