@@ -66,4 +66,4 @@
 
 ![Результаты тестов](https://disk.yandex.ru/i/i9B8q3ST5gs9BA)
 
-![Результаты тестов](https://disk.yandex.ru/i/bejPsXHN2RAt_g)
+![Результаты тестов. Generators](https://disk.yandex.ru/i/bejPsXHN2RAt_g)
