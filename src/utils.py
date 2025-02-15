@@ -1,8 +1,9 @@
-import os
 import json
+import os
 
 
 def get_operations_data():
+    '''принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях'''
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     file_path = os.path.join(project_root, 'data', 'operations.json')
 

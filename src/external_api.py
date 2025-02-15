@@ -1,6 +1,8 @@
 import os
+
 import requests
 from dotenv import load_dotenv
+
 from src.utils import get_operations_data
 
 load_dotenv()
@@ -12,6 +14,10 @@ transactions = get_operations_data()
 
 
 def convert_to_rub(transaction):
+    '''принимает на вход транзакцию и возвращает сумму транзакции
+     (amount) в рублях. Если транзакция была в USD или EUR, происходит
+      обращение к внешнему API для получения текущего курса валют и
+      конвертации суммы операции в рубли'''
     amount = float(transaction['operationAmount']['amount'])
     currency = transaction['operationAmount']['currency']['code']
 
