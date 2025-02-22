@@ -15,20 +15,22 @@ logger.addHandler(file_handler)
 
 def get_mask_card_number(card_number: str) -> str:
     """Маска номера карты"""
-    if len(card_number) != 16 or card_number == '' or not card_number.isdigit():
-        logger.error('Неверный номер карты: %s', card_number)
-        raise ValueError('Номер карты должен состоять из 16 цифр',)
-    masked_number = f"{card_number[:len(card_number) - 12]} {card_number[-12:-10]}** **** {card_number[-4:]}"
+    # if len(card_number) != 16 or card_number == '' or not card_number.isdigit():
+    #     logger.error('Неверный номер карты: %s', card_number)
+    #     raise ValueError('Номер карты должен состоять из 16 цифр',)
+    masked_number = f"{card_number[:- 12]} {card_number[-12:-10]}** **** {card_number[-4:]}"
+    # masked_number = f"{card_number[:len(card_number) - 12]} {card_number[-12:-10]}** **** {card_number[-4:]}"
     logger.info('Получена маска номера карты: %s', masked_number)
     return masked_number
 
 
 def get_mask_account(card_mask: str) -> str:
     """Маска счета"""
-    if len(card_mask) != 20 or card_mask == '' or not card_mask.isdigit():
-        logger.error('Неверный номер маски карты: %s', card_mask)
-        raise ValueError('Номер карты должен состоять из 20 цифр')
+    # if len(card_mask) != 20 or card_mask == '' or not card_mask.isdigit():
+    #     logger.error('Неверный номер маски карты: %s', card_mask)
+    #     raise ValueError('Номер карты должен состоять из 20 цифр')
     masked_account = f"**{card_mask[-4:]}"
+    masked_account = f"Счет **{card_mask[-4:]}"
     logger.info('Получена маска счета: %s', masked_account)
     return masked_account
 

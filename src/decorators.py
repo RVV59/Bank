@@ -10,7 +10,6 @@ def log(filename=None):
                 result = func(*args, **kwargs)
                 end_time = time.time()
                 log_message = f"{func.__name__} OK\n"
-                due = end_time - start_time
                 if filename:
                     with open(filename, 'a') as f:
                         f.write(log_message + '\n')
@@ -43,5 +42,6 @@ my_function(4, 2)
 @log(filename="")
 def my_function(x, y):
     return x / y
+
 
 my_function(6, 3)
